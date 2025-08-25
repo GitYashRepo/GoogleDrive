@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseHostedurl = import.meta.env.VITE_WEBTECHWARE_VERCEL_URL;
+const localhost = "http://localhost:4040"
 
 const axiosInstance = axios.create({
   baseURL: `${baseHostedurl}`,
