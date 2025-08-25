@@ -39,7 +39,7 @@ function Home() {
     const handleLogout = async () => {
         try {
             await dispatch(logout()).unwrap()
-            navigate("/login")
+            navigate("/user/login")
         } catch (err) {
             console.error("Logout failed:", err)
         }
