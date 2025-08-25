@@ -23,7 +23,6 @@ import {
     Cloud,
 } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { baseHostedurl } from "@/lib/baseurl"
 
 function Home() {
     const dispatch = useDispatch()
@@ -55,7 +54,7 @@ function Home() {
 
     const handleDownload = (file) => {
         const link = document.createElement("a")
-        link.href = `${baseHostedurl}${file.url}`
+        link.href = `${file.url}`
         link.download = file.originalname || file.name // suggest a filename
         document.body.appendChild(link)
         link.click()
@@ -63,7 +62,7 @@ function Home() {
     }
 
     const handleShare = (file) => {
-        const shareUrl = `${baseHostedurl}${file.url}`
+        const shareUrl = `${file.url}`
         if (navigator.share) {
             navigator.share({
                 title: file.originalname || file.name,
@@ -219,7 +218,7 @@ function Home() {
                                             <div className="text-center">
                                                 {file.url && (/\.(jpg|jpeg|png|gif)$/i.test(file.name || file.originalname)) ? (
                                                     <img
-                                                        src={`${baseHostedurl}${file.url}`}
+                                                        src={file.url}
                                                         className="w-20 h-20 object-contain mx-auto"
                                                         alt={file.name}
                                                     />
@@ -231,7 +230,7 @@ function Home() {
 
                                                 {file.url && (
                                                     <a
-                                                        href={`${baseHostedurl}${file.url}`}
+                                                        href={file.url}
                                                         target="_blank"
                                                         rel="noreferrer"
                                                         className="text-xs text-blue-600 hover:underline mt-1 block truncate w-20"
